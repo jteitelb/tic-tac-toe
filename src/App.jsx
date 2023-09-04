@@ -1,6 +1,4 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 
 const values = ["", "X", "O"];
@@ -8,18 +6,21 @@ const values = ["", "X", "O"];
 const nextValue = (val) => values[(values.findIndex((v) => v == val) + 1) % 3];
 
 function App() {
-  const [squares, setSquares] = useState(Array(9).fill("X"));
+  const [squares, setSquares] = useState(Array(9).fill(""));
+  const [turn, setTurn] = useState(1);
 
   const handleClick = (index) => {
-    for (let i = 0; i < 3; i++) {
-      console.log(nextValue(values[i]));
+    if (squares[index] !== "") {
+      console.log("Tried to place on non-empty square");
+      return;
     }
     setSquares((currSquares) => {
       const result = [...currSquares];
-      result.splice(index, 1, nextValue(currSquares[index]));
+      const playerMark = turn % 2 == 1 ? "X" : "O";
+      result.splice(index, 1, playerMark);
       return result;
     });
-    console.log(squares);
+    setTurn((turn) => turn + 1);
   };
 
   return (
@@ -39,6 +40,14 @@ function App() {
             </div>
           ))}
         </div>
+      </div>
+      <div class="turn-indicator">
+        Turn:{" "}
+        {turn % 2 == 1 ? (
+          <span className="square square-x turn-indicator-tile">X</span>
+        ) : (
+          <span className="square square-o turn-indicator-tile">O</span>
+        )}
       </div>
     </div>
   );
