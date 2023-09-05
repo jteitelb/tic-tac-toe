@@ -45,6 +45,11 @@ function App() {
     return [];
   };
 
+  const resetGame = () => {
+    setSquares(Array(9).fill(""));
+    setTurn(1);
+  };
+
   const winDetected = checkWin(squares).length > 0;
   const winner = squares[checkWin(squares)?.[0]];
   const gameOver = winDetected || turn === 10;
@@ -70,6 +75,9 @@ function App() {
       {winDetected || turn == 10 ? (
         <div className="game-over">
           <h1>{winDetected ? `Winner: ${winner}!` : "It's a Draw!"}</h1>
+          <div className="play-again" onClick={resetGame}>
+            Play again?
+          </div>
         </div>
       ) : (
         <div className="turn-indicator">

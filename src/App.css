@@ -72,3 +72,18 @@ h1 {
   font-size: 2rem;
   margin-left: 0.3em;
 }
+
+.play-again {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 1em auto;
+  width: 6em;
+  height: 2em;
+  font-size: 2em;
+  background-color: #5c6674;
+  border: 1px solid white;
+  border-radius: 8px;
+  cursor: pointer;
+}
