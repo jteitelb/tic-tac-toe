@@ -46,6 +46,7 @@ function App() {
   };
 
   const winDetected = checkWin(squares).length > 0;
+  const winner = squares[checkWin(squares)?.[0]];
   const gameOver = winDetected || turn === 10;
 
   return (
@@ -67,10 +68,12 @@ function App() {
         </div>
       </div>
       {winDetected || turn == 10 ? (
-        <h1>Game Over</h1>
+        <div className="game-over">
+          <h1>{winDetected ? `Winner: ${winner}!` : "It's a Draw!"}</h1>
+        </div>
       ) : (
         <div className="turn-indicator">
-          Turn:{" "}
+          Turn:
           {turn % 2 == 1 ? (
             <span className="square square-x turn-indicator-tile">X</span>
           ) : (
