@@ -51,7 +51,8 @@ function App() {
   };
 
   const winDetected = checkWin(squares).length > 0;
-  const winner = squares[checkWin(squares)?.[0]];
+  const winningLine = checkWin(squares);
+  const winner = squares[winningLine?.[0]];
   const gameOver = winDetected || turn === 10;
 
   return (
