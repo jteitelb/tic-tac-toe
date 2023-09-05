@@ -56,6 +56,11 @@ h1 {
   box-shadow: 3px 3px 2px #094153;
 }
 
+.square-highlighted {
+  outline: 2px solid white;
+  box-shadow: 1px 1px 14px white;
+}
+
 .turn-indicator {
   font-size: 2em;
   text-align: right;

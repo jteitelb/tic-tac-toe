@@ -64,7 +64,7 @@ function App() {
             <div
               className={`square ${
                 square == "X" ? "square-x" : square == "O" ? "square-o" : ""
-              }`}
+              } ${winningLine.includes(index) ? "square-highlighted" : ""}`}
               key={index}
               onClick={() => handleClick(index)}
             >
